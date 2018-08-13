@@ -1,19 +1,17 @@
-name := "scalaPlayPractice"
+name := "scala-play-practice"
 
-lazy val `scalaplaypractice` = (project in file(".")).enablePlugins(PlayScala)
+version := "2.6.0-SNAPSHOT"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.12.6"
 
-libraryDependencies ++= Seq(
-  evolutions,
-  jdbc,
-  cache,
-  ws,
-  "com.typesafe.play" %% "anorm" % "2.5.1",
-  "mysql" % "mysql-connector-java" % "5.1.18",
-  specs2 % Test
-)
+lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
+libraryDependencies += guice
+libraryDependencies += jdbc
+libraryDependencies += evolutions
 
-resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
+libraryDependencies += "com.h2database" % "h2" % "1.4.197"
+//libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.18"
+
+libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.1"
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
