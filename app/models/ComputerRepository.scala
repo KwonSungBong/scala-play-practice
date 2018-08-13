@@ -82,11 +82,18 @@ class ComputerRepository @Inject()(dbapi: DBApi, companyRepository: CompanyRepos
 
     db.withConnection { implicit connection =>
 
+//      val computers = SQL"""
+//        select * from computer
+//        left join company on computer.company_id = company.id
+//        where computer.name like ${filter}
+//        order by ${orderBy} nulls last
+//        limit ${pageSize} offset ${offset}
+//      """.as(withCompany.*)
       val computers = SQL"""
         select * from computer
         left join company on computer.company_id = company.id
         where computer.name like ${filter}
-        order by ${orderBy} nulls last
+        order by ${orderBy}
         limit ${pageSize} offset ${offset}
       """.as(withCompany.*)
 
