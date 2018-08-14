@@ -32,6 +32,8 @@ GET  /users/logout              controllers.auth.AuthenticatedUserController.log
 GET  /landingPage               controllers.auth.LandingPageController.showLandingPage
 
 
+GET     /test                       controllers.LayoutTestController.test
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
