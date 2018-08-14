@@ -1,7 +1,8 @@
-package controllers
+package controllers.widget
 
+import controllers.routes
 import javax.inject.Inject
-import models.Widget
+import models.widget.Widget
 import play.api.data._
 import play.api.mvc._
 

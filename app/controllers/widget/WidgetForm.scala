@@ -1,4 +1,4 @@
-package controllers
+package controllers.widget
 
 object WidgetForm {
   import play.api.data.Form

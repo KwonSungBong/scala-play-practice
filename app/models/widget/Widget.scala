@@ -1,4 +1,4 @@
-package models
+package models.widget
 
 /**
  * Presentation object used for displaying data in a template.

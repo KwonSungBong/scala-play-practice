@@ -1,3 +1,5 @@
+@import controllers.widget.WidgetForm
+@import models.widget.Widget
 @(widgets: Seq[Widget], form: Form[WidgetForm.Data], postUrl: Call)(implicit request: MessagesRequestHeader)
 
 <!DOCTYPE html>
