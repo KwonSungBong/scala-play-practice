@@ -21,9 +21,7 @@ https://github.com/playframework/play-scala-starter-example
 ############################################################################################################
 
 
-https://github.com/puikinsh/gentelella
-
-
+https://github.com/BlackrockDigital/startbootstrap-sb-admin
 
 
 
