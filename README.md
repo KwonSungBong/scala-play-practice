@@ -18,7 +18,10 @@ https://github.com/alvinj/PlayFrameworkLoginAuthenticationExample
 https://github.com/playframework/play-scala-starter-example
 
 
+############################################################################################################
 
+
+https://github.com/puikinsh/gentelella
 
 
 

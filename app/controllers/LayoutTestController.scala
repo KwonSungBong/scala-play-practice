@@ -8,7 +8,11 @@ class LayoutTestController @Inject()(cc: ControllerComponents) (implicit assetsF
 
 
   def test = Action {
-    Ok(views.html.test("Your new application is ready."))
+    Ok(views.html.test("test"))
+  }
+
+  def plain = Action {
+    Ok(views.html.plain("plain"))
   }
 
 }
