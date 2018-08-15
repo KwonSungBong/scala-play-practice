@@ -1,7 +1,7 @@
 package controllers.auth
 
-import controllers.routes
 import javax.inject.Inject
+
 import models.auth.{Global, User, UserDao}
 import play.api.data.Forms._
 import play.api.data._
