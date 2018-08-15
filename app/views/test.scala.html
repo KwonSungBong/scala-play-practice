@@ -1,6 +1,15 @@
-@(message: String)(implicit assetsFinder: AssetsFinder)
+@(message: String)
 
-@layout.layout("Welcome to Play", assetsFinder) {
+
+@links = {
+    <style></style>
+}
+
+@scripts = {
+    <script type="text/javascript">console.log("test");</script>
+}
+
+@layout.layout(message+" title", links, scripts) {
 
     <h1 id="section-title">test</h1>
 }
