@@ -28,13 +28,14 @@ class UserController @Inject()(
     private val formSubmitUrl = routes.UserController.processLoginAttempt
 
     def showLoginForm = Action { implicit request: MessagesRequest[AnyContent] =>
-        Ok(views.html.auth.userLogin(form, formSubmitUrl))
+        Ok(views.html.auth.loginForm(form, formSubmitUrl))
+          .withSession(Global.SESSION_USERNAME_KEY -> "test")
     }
 
     def processLoginAttempt = Action { implicit request: MessagesRequest[AnyContent] =>
         val errorFunction = { formWithErrors: Form[User] =>
             // form validation/binding failed...
-            BadRequest(views.html.auth.userLogin(formWithErrors, formSubmitUrl))
+            BadRequest(views.html.auth.loginForm(formWithErrors, formSubmitUrl))
         }
         val successFunction = { user: User =>
             // form validation/binding succeeded ...

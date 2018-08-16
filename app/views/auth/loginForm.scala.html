@@ -1,0 +1,120 @@
+@import models.auth.User
+@(
+        form: Form[User],
+        postUrl: Call
+)(implicit request: MessagesRequestHeader)
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Login title</title>
+
+            <!-- Bootstrap core CSS-->
+        <link href="@routes.Assets.at("sb-admin/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+
+            <!-- Custom fonts for this template-->
+        <link href="@routes.Assets.at("sb-admin/vendor/fontawesome-free/css/all.min.css")" rel="stylesheet" type="text/css">
+
+            <!-- Custom styles for this template-->
+        <link href="@routes.Assets.at("sb-admin/css/sb-admin.css")" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-dark">
+
+        <div class="container">
+            <div class="card card-login mx-auto mt-5">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <div id="user-login-form">
+
+                        <h1>User Login</h1>
+
+                        @request.flash.data.map{ case (name, value) =>
+                        <div>@name: @value</div>
+                        }
+
+                        @* Global errors are not tied to any particular form field *@
+                        @if(form.hasGlobalErrors) {
+                            @form.globalErrors.map { error: FormError =>
+                                <div>
+                                    Error: @error.key: @error.message
+                                </div>
+                            }
+                        }
+
+                        @helper.form(postUrl, 'id -> "user-login-form") {
+
+                            @helper.CSRF.formField
+
+                            @helper.inputText(
+                                form("username"),
+                                '_label -> "Username",
+                                'placeholder -> "username",
+                                'id -> "username",
+                                'size -> 60
+                            )
+
+                            @helper.inputPassword(
+                                form("password"),
+                                '_label -> "Password",
+                                'placeholder -> "password",
+                                'id -> "password",
+                                'size -> 60
+                            )
+
+                            <button>Login</button>
+
+                        }
+
+                    </div>
+                    @*<form>*@
+                        @*<div class="form-group">*@
+                            @*<div class="form-label-group">*@
+                                @*<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">*@
+                                @*<label for="inputEmail">Email address</label>*@
+                            @*</div>*@
+                        @*</div>*@
+                        @*<div class="form-group">*@
+                            @*<div class="form-label-group">*@
+                                @*<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">*@
+                                @*<label for="inputPassword">Password</label>*@
+                            @*</div>*@
+                        @*</div>*@
+                        @*<div class="form-group">*@
+                            @*<div class="checkbox">*@
+                                @*<label>*@
+                                    @*<input type="checkbox" value="remember-me">*@
+                                    @*Remember Password*@
+                                @*</label>*@
+                            @*</div>*@
+                        @*</div>*@
+                        @*<a class="btn btn-primary btn-block" href="index.html">Login</a>*@
+                    @*</form>*@
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="register.html">Register an Account</a>
+                        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Bootstrap core JavaScript-->
+        <script src="@routes.Assets.at("sb-admin/vendor/jquery/jquery.min.js")"></script>
+        <script src="@routes.Assets.at("sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+
+            <!-- Core plugin JavaScript-->
+        <script src="@routes.Assets.at("sb-admin/vendor/jquery-easing/jquery.easing.min.js")"></script>
+
+    </body>
+
+</html>

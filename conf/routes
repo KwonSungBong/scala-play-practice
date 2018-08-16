@@ -40,6 +40,7 @@ GET     /register                      controllers.AuthController.register
 GET     /forgotPassword                      controllers.AuthController.forgotPassword
 
 ->         /v1/posts               v1.post.PostRouter
+#GET     /v1/posts                      v1.post.PostController.index
 
 
 # Map static resources from the /public folder to the /assets URL path
