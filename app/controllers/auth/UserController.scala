@@ -29,7 +29,6 @@ class UserController @Inject()(
 
     def showLoginForm = Action { implicit request: MessagesRequest[AnyContent] =>
         Ok(views.html.auth.loginForm(form, formSubmitUrl))
-          .withSession(Global.SESSION_USERNAME_KEY -> "test")
     }
 
     def processLoginAttempt = Action { implicit request: MessagesRequest[AnyContent] =>
