@@ -3,9 +3,10 @@ package models
 import java.util.Date
 import javax.inject.Inject
 
-import anorm.SqlParser.{ get, scalar }
+import anorm.SqlParser.{get, scalar}
 import anorm._
 import play.api.db.DBApi
+import repositories.DatabaseExecutionContext
 
 import scala.concurrent.Future
 
@@ -20,13 +21,13 @@ object Computer {
     Macro.toParameters[Computer]
 }
 
-/**
- * Helper for pagination.
- */
-case class Page[A](items: Seq[A], page: Int, offset: Long, total: Long) {
-  lazy val prev = Option(page - 1).filter(_ >= 0)
-  lazy val next = Option(page + 1).filter(_ => (offset + items.size) < total)
-}
+///**
+// * Helper for pagination.
+// */
+//case class Page[A](items: Seq[A], page: Int, offset: Long, total: Long) {
+//  lazy val prev = Option(page - 1).filter(_ >= 0)
+//  lazy val next = Option(page + 1).filter(_ => (offset + items.size) < total)
+//}
 
 
 @javax.inject.Singleton
@@ -116,7 +117,7 @@ class ComputerRepository @Inject()(dbapi: DBApi, companyRepository: CompanyRepos
   def update(id: Long, computer: Computer) = Future {
     db.withConnection { implicit connection =>
       SQL("""
-        update computer set name = {name}, introduced = {introduced}, 
+        update computer set name = {name}, introduced = {introduced},
           discontinued = {discontinued}, company_id = {companyId}
         where id = {id}
       """).bind(computer.copy(id = Some(id)/* ensure */)).executeUpdate()

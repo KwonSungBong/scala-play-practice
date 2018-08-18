@@ -2,12 +2,11 @@ package models
 
 import javax.inject.Inject
 
-import scala.util.{ Failure, Success }
-
+import scala.util.{Failure, Success}
 import anorm._
-import anorm.SqlParser.{ get, str }
-
+import anorm.SqlParser.{get, str}
 import play.api.db.DBApi
+import repositories.DatabaseExecutionContext
 
 import scala.concurrent.Future
 
@@ -29,7 +28,7 @@ class CompanyRepository @Inject()(dbapi: DBApi)(implicit ec: DatabaseExecutionCo
 
   /**
    * Construct the Seq[(String,String)] needed to fill a select options set.
-   * 
+   *
    * Uses `SqlQueryResult.fold` from Anorm streaming,
    * to accumulate the rows as an options list.
    */

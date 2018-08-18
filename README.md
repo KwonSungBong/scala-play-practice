@@ -27,4 +27,12 @@ https://github.com/BlackrockDigital/startbootstrap-sb-admin
 https://github.com/playframework/play-scala-streaming-example/commit/6d8855c3b1acb1f55cd6924cd4a82f09bf85e716
 
 
+############################################################################################################
+
+
+https://alvinalexander.com/downloads/PlayFrameworkRecipes-0_2.pdf
+
+
+
+
 
